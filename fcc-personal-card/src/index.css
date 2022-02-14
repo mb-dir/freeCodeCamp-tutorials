@@ -12,9 +12,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #202026;
   color: #ffffff;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.card {
+  border: 3px solid #111013;
+  border-radius: 5px;
+  width: 300px;
+  height: 85vh;
+  margin: 0 auto;
 }
