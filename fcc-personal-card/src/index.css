@@ -26,3 +26,33 @@ code {
   height: 85vh;
   margin: 0 auto;
 }
+.cardHeader {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cardHeader__name {
+  font-size: 24px;
+  margin: 5px;
+}
+.cardHeader__info {
+  font-size: 14px;
+  margin: 0;
+  width: 100%;
+}
+.cardHeader__link {
+  display: block;
+  width: 35%;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.mailto {
+  color: #111013;
+  background-color: #ffffff;
+}
+.linkedin {
+  color: #ffffff;
+  background-color: #4783dc;
+}
