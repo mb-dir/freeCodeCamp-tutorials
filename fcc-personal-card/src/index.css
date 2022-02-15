@@ -56,3 +56,15 @@ code {
   color: #ffffff;
   background-color: #4783dc;
 }
+.cardMain {
+  text-align: left;
+  padding: 10px;
+}
+.cardMain__header {
+  margin: 0;
+  font-size: 18px;
+}
+.cardMain__info {
+  font-size: 12px;
+  margin: 0 0 5px 0;
+}
