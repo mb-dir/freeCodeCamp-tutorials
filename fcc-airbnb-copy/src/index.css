@@ -24,3 +24,23 @@ code {
   height: 40px;
   margin-left: 50px;
 }
+.heroSection {
+  width: 80%;
+  margin: 0 auto;
+}
+.heroSection__photo {
+  width: 100%;
+  margin-top: 10px;
+}
+.heroSection__header {
+  font-size: 42px;
+}
+.heroSection__info {
+  width: 60%;
+  font-size: 20px;
+}
+@media (min-width: 824px) {
+  .heroSection__info {
+    width: 30%;
+  }
+}
