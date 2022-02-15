@@ -1,3 +1,5 @@
+import { FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import photoSrc from "./assets/me.jpg";
 function CardHeader() {
   return (
@@ -9,6 +11,7 @@ function CardHeader() {
         className="cardHeader__link mailto"
         href="mailto: michal.bysiewicz.kontakt@gmail.com"
       >
+        <SiGmail />
         Email
       </a>
       <a
@@ -16,6 +19,7 @@ function CardHeader() {
         href="https://www.linkedin.com/in/micha%C5%82-bysiewicz-b02a78231/"
         target="_blank"
       >
+        <FaLinkedin />
         Linkedin
       </a>
     </header>
