@@ -68,3 +68,12 @@ code {
   font-size: 12px;
   margin: 0 0 5px 0;
 }
+.cardFooter {
+  background-color: #111013;
+  width: 296px;
+  padding: 6px;
+}
+.cardFooter__link {
+  color: #ffffff;
+  margin: 0 20px;
+}
