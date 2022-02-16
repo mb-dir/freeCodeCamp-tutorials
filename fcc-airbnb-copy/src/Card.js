@@ -1,16 +1,15 @@
-import photoSrc from "./assets/katie-zaferes.png";
 import { AiFillStar } from "react-icons/ai";
-function Card() {
+function Card(props) {
   return (
     <div className="card">
-      <img src={photoSrc} className="card__photo" alt="kate zaferes photo" />
+      <img src={props.img} className="card__photo" alt="kate zaferes photo" />
       <div>
         <p className="card__info">
           <AiFillStar />
-          5.0(6) USA
+          {props.rating} {props.reviewCount} {props.country}
         </p>
-        <p className="card__info">Life lessons with Katie Zaferes</p>
-        <p className="card__info">Form 136$/person</p>
+        <p className="card__info">{props.title}</p>
+        <p className="card__info">Form {props.price}$/person</p>
       </div>
     </div>
   );

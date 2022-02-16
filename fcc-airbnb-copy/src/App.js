@@ -1,3 +1,5 @@
+import photoSrc from "./assets/katie-zaferes.png";
+
 import Header from "./Header";
 import Hero from "./Hero";
 import Card from "./Card";
@@ -6,7 +8,14 @@ function App() {
     <div>
       <Header />
       <Hero />
-      <Card />
+      <Card
+        img={photoSrc}
+        rating="5.0"
+        reviewCount={6}
+        country="USA"
+        title="Life Lessons with Katie Zaferes"
+        price={136}
+      />
     </div>
   );
 }
