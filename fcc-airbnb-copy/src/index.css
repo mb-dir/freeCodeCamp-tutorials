@@ -51,6 +51,7 @@ code {
 }
 .card__photo {
   border-radius: 5px;
+  width: 100%;
 }
 .card__info {
   margin: 0;
