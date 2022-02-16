@@ -1,21 +1,28 @@
-import photoSrc from "./assets/katie-zaferes.png";
-
 import Header from "./Header";
 import Hero from "./Hero";
 import Card from "./Card";
+
+import data from "./data";
+
 function App() {
+  const cardsComponents = data.map(data => {
+    return (
+      <Card
+        img={data.coverImg}
+        rating={data.rating}
+        reviewCount={data.reviewCount}
+        country={data.location}
+        title={data.title}
+        price={data.price}
+      />
+    );
+  });
+
   return (
     <div>
       <Header />
       <Hero />
-      <Card
-        img={photoSrc}
-        rating="5.0"
-        reviewCount={6}
-        country="USA"
-        title="Life Lessons with Katie Zaferes"
-        price={136}
-      />
+      {cardsComponents}
     </div>
   );
 }
