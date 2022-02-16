@@ -9,8 +9,8 @@ function App() {
     return (
       <Card
         img={data.coverImg}
-        rating={data.rating}
-        reviewCount={data.reviewCount}
+        rating={data.stats.rating}
+        reviewCount={data.stats.reviewCount}
         country={data.location}
         title={data.title}
         price={data.price}
