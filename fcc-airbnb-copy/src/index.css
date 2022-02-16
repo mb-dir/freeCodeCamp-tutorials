@@ -44,6 +44,10 @@ code {
     width: 30%;
   }
 }
+.cardContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
 .card {
   width: 20%;
   text-align: center;

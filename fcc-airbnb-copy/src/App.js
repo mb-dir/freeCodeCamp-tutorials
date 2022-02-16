@@ -22,7 +22,7 @@ function App() {
     <div>
       <Header />
       <Hero />
-      {cardsComponents}
+      <div className="cardContainer">{cardsComponents}</div>
     </div>
   );
 }
