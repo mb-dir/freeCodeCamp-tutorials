@@ -2,7 +2,11 @@ import { AiFillStar } from "react-icons/ai";
 function Card(props) {
   return (
     <div className="card">
-      <img src={props.img} className="card__photo" alt="kate zaferes photo" />
+      <img
+        src={`../assets/${props.img}`}
+        className="card__photo"
+        alt="kate zaferes photo"
+      />
       <div>
         <p className="card__info">
           <AiFillStar />
