@@ -14,6 +14,7 @@ function App() {
         country={data.location}
         title={data.title}
         price={data.price}
+        key={data.id}
       />
     );
   });
