@@ -2,6 +2,7 @@ import { AiFillStar } from "react-icons/ai";
 function Card(props) {
   return (
     <div className="card">
+      {props.openSpots === 0 && <div className="card__soldInfo">sold out</div>}
       <img
         src={`../assets/${props.img}`}
         className="card__photo"

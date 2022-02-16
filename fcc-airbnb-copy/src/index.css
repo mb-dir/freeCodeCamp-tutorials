@@ -52,6 +52,16 @@ code {
   width: 20%;
   text-align: center;
   margin: 20px 10px;
+  position: relative;
+}
+.card__soldInfo {
+  position: absolute;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 0 15px;
+  top: 2%;
+  left: 5%;
 }
 .card__photo {
   border-radius: 5px;
