@@ -9,10 +9,7 @@ export default function Navbar(props) {
 
       <div className="toggler">
         <p className="toggler--light">Light</p>
-        <div
-          className="toggler--slider"
-          onClick={() => props.toggleDarkMode(props.darkMode)}
-        >
+        <div className="toggler--slider" onClick={props.toggleDarkMode}>
           <div className="toggler--slider--circle" />
         </div>
         <p className="toggler--dark">Dark</p>

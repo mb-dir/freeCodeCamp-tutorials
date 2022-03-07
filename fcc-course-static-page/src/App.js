@@ -5,8 +5,8 @@ import Main from "./components/Main";
 export default function App() {
   const [ isDarkMode, setIsDarkMode ] = React.useState(true);
 
-  function toggleDarkMode(isDark) {
-    setIsDarkMode(!isDark);
+  function toggleDarkMode() {
+    setIsDarkMode(prevIsDarkMode => !prevIsDarkMode);
   }
 
   return (
