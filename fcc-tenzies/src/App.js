@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <div>
-      <h1>Tenzies game</h1>
-    </div>
-  );
+  return <main className="mainContainer" />;
 }
 
 export default App;
