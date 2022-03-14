@@ -20,6 +20,7 @@ function App() {
   return (
     <main className="mainContainer">
       <div className="dieContainer">{diceList}</div>
+      <button className="rollBtn">Roll</button>
     </main>
   );
 }
