@@ -17,10 +17,16 @@ function App() {
     return <Die number={el} />;
   });
 
+  function roll() {
+    setDiceNumbers(allNewDice());
+  }
+
   return (
     <main className="mainContainer">
       <div className="dieContainer">{diceList}</div>
-      <button className="rollBtn">Roll</button>
+      <button className="rollBtn" onClick={roll}>
+        Roll
+      </button>
     </main>
   );
 }
