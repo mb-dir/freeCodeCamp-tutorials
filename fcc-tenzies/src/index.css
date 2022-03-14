@@ -55,6 +55,9 @@ code {
   padding: 10px;
   cursor: pointer;
 }
+.die--green {
+  background-color: #59e391;
+}
 @media (min-width: 768px) {
   .dieContainer {
     grid-template-columns: repeat(5, 80px);
