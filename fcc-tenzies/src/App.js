@@ -76,7 +76,7 @@ function App() {
       </p>
       <div className="dieContainer">{diceList}</div>
       <button className="rollBtn" onClick={roll}>
-        Roll
+        {tenzies ? "New game" : "Roll"}
       </button>
     </main>
   );
