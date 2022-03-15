@@ -19,11 +19,23 @@ function App() {
   //Generate 10 Die components based on generated arrays of random numbers
   const [ diceNumbers, setDiceNumbers ] = React.useState(allNewDice());
   const diceList = diceNumbers.map(el => {
-    return <Die key={el.id} number={el.number} isHeld={el.isHeld} />;
+    return (
+      <Die
+        key={el.id}
+        number={el.number}
+        isHeld={el.isHeld}
+        id={el.id}
+        holdDice={holdDice}
+      />
+    );
   });
 
   function roll() {
     setDiceNumbers(allNewDice());
+  }
+
+  function holdDice(id) {
+    console.log(id);
   }
 
   return (
