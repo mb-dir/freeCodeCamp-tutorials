@@ -30,6 +30,15 @@ function App() {
     );
   });
 
+  const [ tenzies, setTenzies ] = React.useState(false);
+
+  React.useEffect(
+    () => {
+      console.log("Use effect");
+    },
+    [ diceNumbers ]
+  );
+
   function roll() {
     setDiceNumbers(prevDiceArr => {
       return prevDiceArr.map(die => {
