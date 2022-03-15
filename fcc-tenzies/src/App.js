@@ -34,7 +34,14 @@ function App() {
 
   React.useEffect(
     () => {
-      console.log("Use effect");
+      //There is an index of first element which has isHeld value === false, if there is no such an element isHeldFalseIndex === -1, which means each of die is hold and user won the game
+      const isHeldFalseIndex = diceNumbers.findIndex(die => {
+        return !die.isHeld;
+      });
+      if (isHeldFalseIndex === -1) {
+        setTenzies(true);
+        console.log("You won");
+      }
     },
     [ diceNumbers ]
   );
