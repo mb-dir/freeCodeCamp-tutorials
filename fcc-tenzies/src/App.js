@@ -50,7 +50,6 @@ function App() {
 
       if (isHeldFalseIndex === -1 && isAllDiceNumberTheSame) {
         setTenzies(true);
-        console.log("You won");
       }
     },
     [ diceNumbers ]
