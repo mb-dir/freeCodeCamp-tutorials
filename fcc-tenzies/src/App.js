@@ -38,7 +38,17 @@ function App() {
       const isHeldFalseIndex = diceNumbers.findIndex(die => {
         return !die.isHeld;
       });
-      if (isHeldFalseIndex === -1) {
+
+      //Imperative way to check if all the die.number are the same
+      let isAllDiceNumberTheSame = true;
+      for (let i = 0; i < diceNumbers.length - 1; i++) {
+        if (diceNumbers[i].number !== diceNumbers[i + 1].number) {
+          isAllDiceNumberTheSame = false;
+          break;
+        }
+      }
+
+      if (isHeldFalseIndex === -1 && isAllDiceNumberTheSame) {
         setTenzies(true);
         console.log("You won");
       }
