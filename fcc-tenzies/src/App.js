@@ -47,16 +47,21 @@ function App() {
   );
 
   function roll() {
-    setDiceNumbers(prevDiceArr => {
-      return prevDiceArr.map(die => {
-        if (die.isHeld) {
-          return die;
-        } else {
-          const newRandomNumber = Math.floor(Math.random() * (6 - 1)) + 1;
-          return { ...die, number: newRandomNumber, id: nanoid() };
-        }
+    if (tenzies) {
+      setTenzies(false);
+      setDiceNumbers(allNewDice());
+    } else {
+      setDiceNumbers(prevDiceArr => {
+        return prevDiceArr.map(die => {
+          if (die.isHeld) {
+            return die;
+          } else {
+            const newRandomNumber = Math.floor(Math.random() * (6 - 1)) + 1;
+            return { ...die, number: newRandomNumber, id: nanoid() };
+          }
+        });
       });
-    });
+    }
   }
 
   function holdDice(id) {
