@@ -23,11 +23,13 @@ code {
 .title {
   margin: 0 200px;
 }
-.rollAmount {
-  /* margin: 0 400px; */
+.rollAmountContainer {
   position: absolute;
   top: 0;
   left: 75%;
+}
+.rollAmount {
+  margin: 5px 0 0;
 }
 .mainContainer {
   position: relative;
