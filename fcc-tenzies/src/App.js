@@ -60,7 +60,9 @@ function App() {
     if (tenzies) {
       setTenzies(false);
       setDiceNumbers(allNewDice());
+      setCurrentRollAmount(0);
     } else {
+      setCurrentRollAmount(prev => prev + 1);
       setDiceNumbers(prevDiceArr => {
         return prevDiceArr.map(die => {
           if (die.isHeld) {
