@@ -23,7 +23,14 @@ code {
 .title {
   margin: 0 200px;
 }
+.rollAmount {
+  /* margin: 0 400px; */
+  position: absolute;
+  top: 0;
+  left: 75%;
+}
 .mainContainer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
