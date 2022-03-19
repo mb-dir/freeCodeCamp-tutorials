@@ -32,6 +32,10 @@ function App() {
 
   const [ tenzies, setTenzies ] = React.useState(false);
   const [ currentRollAmount, setCurrentRollAmount ] = React.useState(0);
+  const [ rollAmountStats, setRollAmountStats ] = React.useState({
+    min: JSON.parse(localStorage.getItem("min")) || 0,
+    max: JSON.parse(localStorage.getItem("max")) || 0,
+  });
 
   React.useEffect(
     () => {
@@ -87,7 +91,11 @@ function App() {
   return (
     <main className="mainContainer">
       <h1 className="title">Tenzies</h1>
-      <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
+      <div className="rollAmountContainer">
+        <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
+        <p className="rollAmount">max: {rollAmountStats.max}</p>
+        <p className="rollAmount">min: {rollAmountStats.min}</p>
+      </div>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
