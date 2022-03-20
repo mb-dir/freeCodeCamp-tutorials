@@ -102,8 +102,12 @@ function App() {
       <h1 className="title">Tenzies</h1>
       <div className="rollAmountContainer">
         <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
-        <p className="rollAmount">max: {rollAmountStats.max}</p>
-        <p className="rollAmount">min: {rollAmountStats.min}</p>
+        <p className="rollAmount">
+          max: {rollAmountStats.length ? Math.max(...rollAmountStats) : 0}
+        </p>
+        <p className="rollAmount">
+          min: {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
+        </p>
       </div>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
