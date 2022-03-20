@@ -31,6 +31,10 @@ function App() {
   });
 
   const [ tenzies, setTenzies ] = React.useState(false);
+  const [ currentRollAmount, setCurrentRollAmount ] = React.useState(0);
+  const [ rollAmountStats, setRollAmountStats ] = React.useState(
+    JSON.parse(localStorage.getItem("rollStatsArray")) || []
+  );
 
   React.useEffect(
     () => {
@@ -55,11 +59,23 @@ function App() {
     [ diceNumbers ]
   );
 
+  React.useEffect(
+    () => {
+      localStorage.setItem("rollStatsArray", JSON.stringify(rollAmountStats));
+    },
+    [ tenzies ]
+  );
+
   function roll() {
     if (tenzies) {
       setTenzies(false);
       setDiceNumbers(allNewDice());
+      setCurrentRollAmount(0);
+      setRollAmountStats(prevRollStats => {
+        return [ ...prevRollStats, currentRollAmount ];
+      });
     } else {
+      setCurrentRollAmount(prev => prev + 1);
       setDiceNumbers(prevDiceArr => {
         return prevDiceArr.map(die => {
           if (die.isHeld) {
@@ -84,6 +100,23 @@ function App() {
   return (
     <main className="mainContainer">
       <h1 className="title">Tenzies</h1>
+      <div className="rollAmountContainer">
+        <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
+        <p className="rollAmount">
+          max: {rollAmountStats.length ? Math.max(...rollAmountStats) : 0}
+        </p>
+        <p className="rollAmount">
+          min: {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
+        </p>
+        <p className="rollAmount">
+          sample mean:
+          {rollAmountStats.length ? (
+            rollAmountStats.reduce((a, b) => a + b, 0) / rollAmountStats.length
+          ) : (
+            0
+          )}
+        </p>
+      </div>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
