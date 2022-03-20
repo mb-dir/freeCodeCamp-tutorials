@@ -108,6 +108,14 @@ function App() {
         <p className="rollAmount">
           min: {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
         </p>
+        <p className="rollAmount">
+          sample mean:
+          {rollAmountStats.length ? (
+            rollAmountStats.reduce((a, b) => a + b, 0) / rollAmountStats.length
+          ) : (
+            0
+          )}
+        </p>
       </div>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
