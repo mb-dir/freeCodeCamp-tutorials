@@ -32,10 +32,9 @@ function App() {
 
   const [ tenzies, setTenzies ] = React.useState(false);
   const [ currentRollAmount, setCurrentRollAmount ] = React.useState(0);
-  const [ rollAmountStats, setRollAmountStats ] = React.useState({
-    min: JSON.parse(localStorage.getItem("min")) || 0,
-    max: JSON.parse(localStorage.getItem("max")) || 0,
-  });
+  const [ rollAmountStats, setRollAmountStats ] = React.useState(
+    JSON.parse(localStorage.getItem("rollStatsArray")) || []
+  );
 
   React.useEffect(
     () => {
