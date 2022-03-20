@@ -59,11 +59,21 @@ function App() {
     [ diceNumbers ]
   );
 
+  React.useEffect(
+    () => {
+      localStorage.setItem("rollStatsArray", JSON.stringify(rollAmountStats));
+    },
+    [ tenzies ]
+  );
+
   function roll() {
     if (tenzies) {
       setTenzies(false);
       setDiceNumbers(allNewDice());
       setCurrentRollAmount(0);
+      setRollAmountStats(prevRollStats => {
+        return [ ...prevRollStats, currentRollAmount ];
+      });
     } else {
       setCurrentRollAmount(prev => prev + 1);
       setDiceNumbers(prevDiceArr => {
