@@ -36,6 +36,7 @@ function App() {
     JSON.parse(localStorage.getItem("rollStatsArray")) || []
   );
   const [ currentTime, setCurrentTime ] = React.useState(0);
+  const [ isTimeoutActive, setIsTimeoutActive ] = React.useState(false);
 
   React.useEffect(
     () => {
@@ -69,12 +70,15 @@ function App() {
 
   React.useEffect(
     () => {
-      const timeoutCollback = () => {
-        setCurrentTime(prevTime => prevTime + 1);
-      };
-      setTimeout(timeoutCollback, 1000);
+      let interval = null;
+      if (isTimeoutActive) {
+        interval = setInterval(() => {
+          setCurrentTime(seconds => seconds + 1);
+        }, 1000);
+      }
+      return () => clearInterval(interval);
     },
-    [ currentTime ]
+    [ isTimeoutActive, currentTime ]
   );
 
   function roll() {
@@ -101,6 +105,8 @@ function App() {
   }
 
   function holdDice(id) {
+    //Start timing after user clicks the die element
+    setIsTimeoutActive(true);
     setDiceNumbers(prevDiceArray => {
       return prevDiceArray.map(die => {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
