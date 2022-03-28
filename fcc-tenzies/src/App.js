@@ -35,6 +35,9 @@ function App() {
   const [ rollAmountStats, setRollAmountStats ] = React.useState(
     JSON.parse(localStorage.getItem("rollStatsArray")) || []
   );
+  const [ timeStats, setTimeStats ] = React.useState(
+    JSON.parse(localStorage.getItem("timeStats")) || []
+  );
   const [ currentTime, setCurrentTime ] = React.useState(0);
   const [ isTimeoutActive, setIsTimeoutActive ] = React.useState(false);
 
@@ -76,6 +79,7 @@ function App() {
           setCurrentTime(seconds => seconds + 1);
         }, 1000);
       } else if (!tenzies && !isTimeoutActive) {
+        localStorage.setItem("timeStats", JSON.stringify(timeStats));
         clearInterval(interval);
         setCurrentTime(0);
       }
@@ -92,6 +96,9 @@ function App() {
       setCurrentRollAmount(0);
       setRollAmountStats(prevRollStats => {
         return [ ...prevRollStats, currentRollAmount ];
+      });
+      setTimeStats(prevTimeStats => {
+        return [ ...prevTimeStats, currentTime ];
       });
     } else {
       setCurrentRollAmount(prev => prev + 1);
