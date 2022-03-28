@@ -151,7 +151,9 @@ function App() {
           <p className="stats__info">
             Sample game time:{" "}
             {timeStats.length ? (
-              timeStats.reduce((a, b) => a + b, 0) / timeStats.length
+              Math.round(
+                timeStats.reduce((a, b) => a + b, 0) / timeStats.length * 100
+              ) / 100
             ) : (
               0
             )}s
@@ -171,8 +173,11 @@ function App() {
           <p className="stats__info">
             sample mean:
             {rollAmountStats.length ? (
-              rollAmountStats.reduce((a, b) => a + b, 0) /
-              rollAmountStats.length
+              Math.round(
+                rollAmountStats.reduce((a, b) => a + b, 0) /
+                  rollAmountStats.length *
+                  100
+              ) / 100
             ) : (
               0
             )}
