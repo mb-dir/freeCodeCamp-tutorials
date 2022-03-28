@@ -165,13 +165,15 @@ function App() {
             Current roll amount: {currentRollAmount}
           </p>
           <p className="stats__info">
-            max: {rollAmountStats.length ? Math.max(...rollAmountStats) : 0}
+            Max roll amount:{" "}
+            {rollAmountStats.length ? Math.max(...rollAmountStats) : 0}
           </p>
           <p className="stats__info">
-            min: {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
+            Min roll amount:{" "}
+            {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
           </p>
           <p className="stats__info">
-            sample mean:
+            Sample mean:
             {rollAmountStats.length ? (
               Math.round(
                 rollAmountStats.reduce((a, b) => a + b, 0) /
