@@ -127,7 +127,17 @@ function App() {
 
   return (
     <main className="mainContainer">
-      <p>{currentTime}</p>
+      <p>Current game time: {currentTime}s</p>
+      <p>Max game time: {timeStats.length ? Math.max(...timeStats) : 0}s</p>
+      <p>Min game time: {timeStats.length ? Math.min(...timeStats) : 0}s</p>
+      <p>
+        Sample game time:{" "}
+        {timeStats.length ? (
+          timeStats.reduce((a, b) => a + b, 0) / timeStats.length
+        ) : (
+          0
+        )}s
+      </p>
       <h1 className="title">Tenzies</h1>
       <div className="rollAmountContainer">
         <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
