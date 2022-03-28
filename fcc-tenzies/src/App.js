@@ -35,6 +35,11 @@ function App() {
   const [ rollAmountStats, setRollAmountStats ] = React.useState(
     JSON.parse(localStorage.getItem("rollStatsArray")) || []
   );
+  const [ timeStats, setTimeStats ] = React.useState(
+    JSON.parse(localStorage.getItem("timeStats")) || []
+  );
+  const [ currentTime, setCurrentTime ] = React.useState(0);
+  const [ isTimeoutActive, setIsTimeoutActive ] = React.useState(false);
 
   React.useEffect(
     () => {
@@ -66,13 +71,34 @@ function App() {
     [ tenzies ]
   );
 
+  React.useEffect(
+    () => {
+      let interval = null;
+      if (isTimeoutActive && !tenzies) {
+        interval = setInterval(() => {
+          setCurrentTime(seconds => seconds + 1);
+        }, 1000);
+      } else if (!tenzies && !isTimeoutActive) {
+        localStorage.setItem("timeStats", JSON.stringify(timeStats));
+        clearInterval(interval);
+        setCurrentTime(0);
+      }
+      return () => clearInterval(interval);
+    },
+    [ isTimeoutActive, currentTime ]
+  );
+
   function roll() {
     if (tenzies) {
       setTenzies(false);
+      setIsTimeoutActive(false);
       setDiceNumbers(allNewDice());
       setCurrentRollAmount(0);
       setRollAmountStats(prevRollStats => {
         return [ ...prevRollStats, currentRollAmount ];
+      });
+      setTimeStats(prevTimeStats => {
+        return [ ...prevTimeStats, currentTime ];
       });
     } else {
       setCurrentRollAmount(prev => prev + 1);
@@ -90,6 +116,8 @@ function App() {
   }
 
   function holdDice(id) {
+    //Start timing after user clicks the die element
+    setIsTimeoutActive(true);
     setDiceNumbers(prevDiceArray => {
       return prevDiceArray.map(die => {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
@@ -99,6 +127,17 @@ function App() {
 
   return (
     <main className="mainContainer">
+      <p>Current game time: {currentTime}s</p>
+      <p>Max game time: {timeStats.length ? Math.max(...timeStats) : 0}s</p>
+      <p>Min game time: {timeStats.length ? Math.min(...timeStats) : 0}s</p>
+      <p>
+        Sample game time:{" "}
+        {timeStats.length ? (
+          timeStats.reduce((a, b) => a + b, 0) / timeStats.length
+        ) : (
+          0
+        )}s
+      </p>
       <h1 className="title">Tenzies</h1>
       <div className="rollAmountContainer">
         <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
