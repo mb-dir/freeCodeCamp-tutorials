@@ -35,6 +35,7 @@ function App() {
   const [ rollAmountStats, setRollAmountStats ] = React.useState(
     JSON.parse(localStorage.getItem("rollStatsArray")) || []
   );
+  const [ currentTime, setCurrentTime ] = React.useState(0);
 
   React.useEffect(
     () => {
@@ -64,6 +65,16 @@ function App() {
       localStorage.setItem("rollStatsArray", JSON.stringify(rollAmountStats));
     },
     [ tenzies ]
+  );
+
+  React.useEffect(
+    () => {
+      const timeoutCollback = () => {
+        setCurrentTime(prevTime => prevTime + 1);
+      };
+      setTimeout(timeoutCollback, 1000);
+    },
+    [ currentTime ]
   );
 
   function roll() {
@@ -99,6 +110,7 @@ function App() {
 
   return (
     <main className="mainContainer">
+      <p>{currentTime}</p>
       <h1 className="title">Tenzies</h1>
       <div className="rollAmountContainer">
         <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
