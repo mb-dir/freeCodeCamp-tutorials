@@ -126,45 +126,67 @@ function App() {
   }
 
   return (
-    <main className="mainContainer">
-      <p>Current game time: {currentTime}s</p>
-      <p>Max game time: {timeStats.length ? Math.max(...timeStats) : 0}s</p>
-      <p>Min game time: {timeStats.length ? Math.min(...timeStats) : 0}s</p>
-      <p>
-        Sample game time:{" "}
-        {timeStats.length ? (
-          timeStats.reduce((a, b) => a + b, 0) / timeStats.length
-        ) : (
-          0
-        )}s
-      </p>
-      <h1 className="title">Tenzies</h1>
-      <div className="rollAmountContainer">
-        <p className="rollAmount">Current roll amount: {currentRollAmount}</p>
-        <p className="rollAmount">
-          max: {rollAmountStats.length ? Math.max(...rollAmountStats) : 0}
+    <React.Fragment>
+      <main className="mainContainer">
+        <h1 className="title">Tenzies</h1>
+        <p className="instructions">
+          Roll until all dice are the same. Click each die to freeze it at its
+          current value between rolls.
         </p>
-        <p className="rollAmount">
-          min: {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
-        </p>
-        <p className="rollAmount">
-          sample mean:
-          {rollAmountStats.length ? (
-            rollAmountStats.reduce((a, b) => a + b, 0) / rollAmountStats.length
-          ) : (
-            0
-          )}
-        </p>
+        <div className="dieContainer">{diceList}</div>
+        <button className="rollBtn" onClick={roll}>
+          {tenzies ? "New game" : "Roll"}
+        </button>
+      </main>
+      <div className="stats">
+        <h2 className="stats__title">Time stats</h2>
+        <div className="stats__container">
+          <p className="stats__info">Current game time: {currentTime}s</p>
+          <p className="stats__info">
+            Max game time: {timeStats.length ? Math.max(...timeStats) : 0}s
+          </p>
+          <p className="stats__info">
+            Min game time: {timeStats.length ? Math.min(...timeStats) : 0}s
+          </p>
+          <p className="stats__info">
+            Sample game time:{" "}
+            {timeStats.length ? (
+              Math.round(
+                timeStats.reduce((a, b) => a + b, 0) / timeStats.length * 100
+              ) / 100
+            ) : (
+              0
+            )}s
+          </p>
+        </div>
+        <h2 className="stats__title">Moves stats</h2>
+        <div className="stats__container">
+          <p className="stats__info">
+            Current roll amount: {currentRollAmount}
+          </p>
+          <p className="stats__info">
+            Max roll amount:{" "}
+            {rollAmountStats.length ? Math.max(...rollAmountStats) : 0}
+          </p>
+          <p className="stats__info">
+            Min roll amount:{" "}
+            {rollAmountStats.length ? Math.min(...rollAmountStats) : 0}
+          </p>
+          <p className="stats__info">
+            Sample mean:
+            {rollAmountStats.length ? (
+              Math.round(
+                rollAmountStats.reduce((a, b) => a + b, 0) /
+                  rollAmountStats.length *
+                  100
+              ) / 100
+            ) : (
+              0
+            )}
+          </p>
+        </div>
       </div>
-      <p className="instructions">
-        Roll until all dice are the same. Click each die to freeze it at its
-        current value between rolls.
-      </p>
-      <div className="dieContainer">{diceList}</div>
-      <button className="rollBtn" onClick={roll}>
-        {tenzies ? "New game" : "Roll"}
-      </button>
-    </main>
+    </React.Fragment>
   );
 }
 
