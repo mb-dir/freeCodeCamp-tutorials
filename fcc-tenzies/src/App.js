@@ -71,10 +71,13 @@ function App() {
   React.useEffect(
     () => {
       let interval = null;
-      if (isTimeoutActive) {
+      if (isTimeoutActive && !tenzies) {
         interval = setInterval(() => {
           setCurrentTime(seconds => seconds + 1);
         }, 1000);
+      } else if (!tenzies && !isTimeoutActive) {
+        clearInterval(interval);
+        setCurrentTime(0);
       }
       return () => clearInterval(interval);
     },
@@ -84,6 +87,7 @@ function App() {
   function roll() {
     if (tenzies) {
       setTenzies(false);
+      setIsTimeoutActive(false);
       setDiceNumbers(allNewDice());
       setCurrentRollAmount(0);
       setRollAmountStats(prevRollStats => {
